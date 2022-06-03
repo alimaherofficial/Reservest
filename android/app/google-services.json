@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "192787143993",
+    "project_id": "reservest-c0d92",
+    "storage_bucket": "reservest-c0d92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192787143993:android:77c6051ad32529f62f5ce8",
+        "android_client_info": {
+          "package_name": "com.reservest.example.reservest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192787143993-lg42pdagbqstojg1prosqrk0uofedkoi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reservest.example.reservest",
+            "certificate_hash": "c71c0ed09bd82ad0de3d6cbc983d7b4a6a671511"
+          }
+        },
+        {
+          "client_id": "192787143993-tfc2hmt1obob8hgmcsiuu6st9ufvc7l0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnNJP4Yo_yrcBRp8I8UJOzbTc9tYISMq0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192787143993-tfc2hmt1obob8hgmcsiuu6st9ufvc7l0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

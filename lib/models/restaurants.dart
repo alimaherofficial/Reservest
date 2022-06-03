@@ -20,6 +20,6 @@ List<RestaurantsModel> getRestaurants = [
       ),
       RestaurantsModel(
         imageName: 'assets/images/starbucks.png',
-        pageName: 'RestaurantsMenu',
+        pageName: 'starbucksMenu',
       ),
     ];

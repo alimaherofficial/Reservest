@@ -1,8 +1,8 @@
-// ignore_for_file: override_on_non_overriding_member
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:reservest/modules/congratulations_screen/congratulations_screen.dart';
 import 'package:reservest/modules/home_screen/home_screen.dart';
 import 'package:reservest/styles/colors/colors.dart';
 
@@ -173,7 +173,7 @@ class _SetLocationState extends State<SetLocation> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
+                        builder: (context) => const CongratulationsScreen(),
                       ),
                     );
                   }

@@ -4,8 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:reservest/cubit/menu/menu_cubit.dart';
 import 'package:reservest/cubit/menu/menu_states.dart';
-import 'package:reservest/modules/restaurants_menu/restaurants_menu.dart';
-import 'package:reservest/modules/starbucks_menu/starbucks_menu.dart';
 import 'package:reservest/styles/colors/colors.dart';
 
 class TimeScreen extends StatefulWidget {
@@ -23,9 +21,9 @@ class _TimeScreenState extends State<TimeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MenuCubit(),
-      child: BlocConsumer<MenuCubit, MenuStates>(
+    return 
+  
+       BlocConsumer<MenuCubit, MenuStates>(
         listener: (context, state) {},
         builder: (context, state) {
           var cubit = MenuCubit.get(context);
@@ -162,16 +160,8 @@ class _TimeScreenState extends State<TimeScreen> {
                               fontSize: 16.0,
                             );
                           } else {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                          cubit.a == 'RestaurantsMenu'
-                                        ? const RestaurantsMenu()
-                                        : const StarbucksMenu(),
-                              ),
-                            );
-                            print(cubit.a.toString());
+                            cubit.ali(context);
+                         //   print(cubit.a.toString());
                           }
                         },
                         color: appColor,
@@ -193,7 +183,6 @@ class _TimeScreenState extends State<TimeScreen> {
             ),
           );
         },
-      ),
     );
   }
 }

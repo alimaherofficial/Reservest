@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reservest/models/restaurants_menu.dart';
-import 'package:reservest/modules/home_screen/home_screen.dart';
+import 'package:reservest/modules/price_screen/price_screen.dart';
 
 class RestaurantsMenu extends StatelessWidget {
   const RestaurantsMenu({Key? key}) : super(key: key);
@@ -50,7 +50,7 @@ Widget menu(
                   Navigator.push(
                     contextx,
                     MaterialPageRoute(
-                      builder: (context) => const HomeScreen(),
+                      builder: (context) => const PriceScreen(),
                     ),
                   );
                 },
@@ -87,7 +87,7 @@ Widget menu(
                   Navigator.push(
                     contextx,
                     MaterialPageRoute(
-                      builder: (context) => const HomeScreen(),
+                      builder: (context) => const PriceScreen(),
                     ),
                   );
                 },

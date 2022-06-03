@@ -47,8 +47,7 @@ class CongratulationsScreen extends StatelessWidget {
                 SizedBox(
                   height: 200,
                   width: 150,
-                  child: SvgPicture.asset(
-                      'assets/images/congratulations.svg'),
+                  child: SvgPicture.asset('assets/images/congratulations.svg'),
                 ),
                 const SizedBox(
                   height: 60,

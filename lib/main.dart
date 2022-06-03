@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reservest/cubit/app_cubit/cubit.dart';
@@ -5,10 +6,13 @@ import 'package:reservest/cubit/app_cubit/stastes.dart';
 import 'package:reservest/cubit/bloc_observer.dart';
 import 'package:reservest/cubit/menu/menu_cubit.dart';
 import 'package:reservest/cubit/menu/menu_states.dart';
-import 'package:reservest/modules/home_screen/home_screen.dart';
+import 'package:reservest/modules/login_screen/login_screen.dart';
 import 'package:reservest/styles/colors/colors.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   BlocOverrides.runZoned(
     () {
       runApp(const MyApp());
@@ -47,7 +51,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: appColor,
               visualDensity: VisualDensity.adaptivePlatformDensity,
             ),
-            home: const HomeScreen()),
+            home: const LoginScreen()),
       ),
     );
   }
