@@ -19,6 +19,7 @@ void main() async {
     },
     blocObserver: MyBlocObserver(),
   );
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -56,3 +57,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+//       <uses-permission android:name="android.permission.INTERNET"/>
