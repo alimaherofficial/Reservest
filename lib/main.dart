@@ -19,7 +19,6 @@ void main() async {
     },
     blocObserver: MyBlocObserver(),
   );
-  
 }
 
 class MyApp extends StatelessWidget {
