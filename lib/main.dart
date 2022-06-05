@@ -6,6 +6,8 @@ import 'package:reservest/cubit/app_cubit/stastes.dart';
 import 'package:reservest/cubit/bloc_observer.dart';
 import 'package:reservest/cubit/menu/menu_cubit.dart';
 import 'package:reservest/cubit/menu/menu_states.dart';
+import 'package:reservest/cubit/menu_price/cubit.dart';
+import 'package:reservest/cubit/menu_price/stastes.dart';
 import 'package:reservest/modules/login_screen/login_screen.dart';
 import 'package:reservest/styles/colors/colors.dart';
 
@@ -34,6 +36,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => MenuCubit(),
         ),
+        BlocProvider(
+          create: (context) => MenuPriceCubit(),
+        ),
       ],
       child: MultiBlocListener(
         listeners: [
@@ -43,15 +48,19 @@ class MyApp extends StatelessWidget {
           BlocListener<MenuCubit, MenuStates>(
             listener: (context, state) {},
           ),
+          BlocListener<MenuPriceCubit, MenuPriceStates>(
+            listener: (context, state) {},
+          ),
         ],
         child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              // add hex color here 00BFA6
-              primarySwatch: appColor,
-              visualDensity: VisualDensity.adaptivePlatformDensity,
-            ),
-            home: const LoginScreen()),
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            // add hex color here 00BFA6
+            primarySwatch: appColor,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          home: const LoginScreen(),
+        ),
       ),
     );
   }

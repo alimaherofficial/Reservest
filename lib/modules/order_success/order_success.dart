@@ -19,8 +19,8 @@ class OrderSuccess extends StatelessWidget {
               SizedBox(
                 height: 300,
                 width: 300,
-                child:
-                    SvgPicture.asset('assets/images/undraw_dua_lipa_ixam.svg'),
+                child: SvgPicture.asset(
+                    'assets/images/undraw_credit_card_re_blml.svg'),
               ),
               const SizedBox(
                 height: 60,
@@ -28,7 +28,7 @@ class OrderSuccess extends StatelessWidget {
               // add login text
 
               const Text(
-                'خلصنا الابلكيشن',
+                'Successful Order',
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -38,7 +38,7 @@ class OrderSuccess extends StatelessWidget {
               // add username text field
               const SizedBox(height: 20),
               const Text(
-                'لولولولولولولولولييييييييي',
+                'You can go to the cashier now to pay ',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

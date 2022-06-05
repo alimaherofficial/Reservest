@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import 'package:reservest/modules/order_success/order_success.dart';
 import 'package:reservest/styles/colors/colors.dart';
