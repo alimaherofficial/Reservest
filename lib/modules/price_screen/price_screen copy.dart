@@ -1,13 +1,14 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reservest/cubit/menu_price/cubit.dart';
 import 'package:reservest/cubit/menu_price/stastes.dart';
-import 'package:reservest/models/starbucks_menu.dart';
+import 'package:reservest/models/restaurants_menu.dart';
 import 'package:reservest/modules/order_success/order_success.dart';
 import 'package:reservest/styles/colors/colors.dart';
 
-class PriceStarbucksListScreen extends StatelessWidget {
-  const PriceStarbucksListScreen({
+class PriceRestaurantScreen extends StatelessWidget {
+  const PriceRestaurantScreen({
     Key? key,
   }) : super(key: key);
 
@@ -39,13 +40,13 @@ class PriceStarbucksListScreen extends StatelessWidget {
                 children: [
                   ListView.separated(
                     physics: const BouncingScrollPhysics(),
-                    itemCount: cubit.priceStarbucksList.length,
+                    itemCount: cubit.priceRestauranList.length,
                     separatorBuilder: (BuildContext context, int index) {
                       return Container();
                     },
                     itemBuilder: (BuildContext context, int index) {
                       return pricebuilder(
-                          cubit.priceStarbucksList[index], context);
+                          cubit.priceRestauranList[index], context);
                     },
                     shrinkWrap: true,
                   ),
@@ -143,8 +144,8 @@ class PriceStarbucksListScreen extends StatelessWidget {
 //           ),
 
 Widget pricebuilder(
-  StarbucksMenuModel model,
-  // RestaurantMenuModel model2,
+  // StarbucksMenuModel model,
+  RestaurantMenuModel model,
   BuildContext context,
 ) =>
     Row(

@@ -10,44 +10,53 @@ class StarbucksMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0,
-        title: const Text('menu'),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.check_box,
-              color: Colors.white,
-              size: 30,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const PriceScreen(),
+    return BlocConsumer<MenuPriceCubit, MenuPriceStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        var cubit = MenuPriceCubit.get(context);
+        return Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            elevation: 0,
+            title: const Text('menu'),
+            actions: [
+              IconButton(
+                icon: const Icon(
+                  Icons.check_box,
+                  color: Colors.white,
+                  size: 30,
                 ),
-              );
-            },
+                onPressed: () {
+                  for (var i = 0; i < cubit.priceStarbucksList.length; i++) {
+                    cubit.price = cubit.price + cubit.priceStarbucksList[i].price!;
+                  }
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PriceStarbucksListScreen(),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
-        ],
-      ),
-      body: SafeArea(
-        child: Center(
-          child: ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            itemCount: getStarbucksMenu1.length,
-            separatorBuilder: (BuildContext context, int index) {
-              return Container();
-            },
-            itemBuilder: (BuildContext context, int index) {
-              return menu(
-                  getStarbucksMenu1[index], getStarbucksMenu2[index], context);
-            },
+          body: SafeArea(
+            child: Center(
+              child: ListView.separated(
+                physics: const BouncingScrollPhysics(),
+                itemCount: getStarbucksMenu1.length,
+                separatorBuilder: (BuildContext context, int index) {
+                  return Container();
+                },
+                itemBuilder: (BuildContext context, int index) {
+                  return menu(getStarbucksMenu1[index],
+                      getStarbucksMenu2[index], context);
+                },
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
@@ -58,10 +67,9 @@ Widget menu(
   BuildContext contextx,
 ) =>
     BlocConsumer<MenuPriceCubit, MenuPriceStates>(
-      listener: (context, state) {
-      },
+      listener: (context, state) {},
       builder: (context, state) {
-          var cubit = MenuPriceCubit.get(context);
+        var cubit = MenuPriceCubit.get(context);
         return Padding(
           padding: const EdgeInsets.all(15.0),
           // ignore: sized_box_for_whitespace
@@ -73,7 +81,7 @@ Widget menu(
                   child: InkWell(
                     onTap: () {
                       cubit.changeColor3(model);
-                     
+                      cubit.addToPriceList(model);
                     },
                     child: Material(
                       elevation: 5.0,
@@ -87,14 +95,6 @@ Widget menu(
                               '${model.imageName}',
                             ),
                           ),
-                          // Padding(
-                          //   padding: const EdgeInsets.symmetric(horizontal: 20),
-                          //   child: Text(
-                          //     '${model.price}',
-                          //     overflow: TextOverflow.ellipsis,
-                          //     maxLines: 1,
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),
@@ -107,6 +107,7 @@ Widget menu(
                   child: InkWell(
                     onTap: () {
                       cubit.changeColor4(model2);
+                      cubit.addToPriceList(model2);
                     },
                     child: Material(
                       shadowColor: Colors.black,
@@ -120,29 +121,6 @@ Widget menu(
                               '${model2.imageName}',
                             ),
                           ),
-                          // Padding(
-                          //   padding: const EdgeInsets.symmetric(horizontal: 20),
-                          //   child: Row(
-                          //     mainAxisSize: MainAxisSize.max,
-                          //     children: [
-                          //       const Text('Price'),
-                          //       const SizedBox(
-                          //         width: 10,
-                          //       ),
-                          //       Expanded(
-                          //         child: Text(
-                          //           '${model.price}',
-                          //           overflow: TextOverflow.ellipsis,
-                          //           maxLines: 1,
-                          //           textAlign: TextAlign.center,
-                          //           style: const TextStyle(
-                          //             fontSize: 16,
-                          //           ),
-                          //         ),
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),

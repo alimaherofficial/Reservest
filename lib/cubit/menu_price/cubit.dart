@@ -25,6 +25,7 @@ class MenuPriceCubit extends Cubit<MenuPriceStates> {
     a = model.isSelected ? Colors.green : Colors.white;
     emit(MenuPriceChangeColorState2());
   }
+
   void changeColor3(
     StarbucksMenuModel model,
   ) {
@@ -32,6 +33,7 @@ class MenuPriceCubit extends Cubit<MenuPriceStates> {
     a = model.isSelected ? Colors.green : Colors.white;
     emit(MenuPriceChangeColorState3());
   }
+
   void changeColor4(
     StarbucksMenuModel model,
   ) {
@@ -39,4 +41,33 @@ class MenuPriceCubit extends Cubit<MenuPriceStates> {
     a = model.isSelected ? Colors.green : Colors.white;
     emit(MenuPriceChangeColorState4());
   }
+
+  List<StarbucksMenuModel> priceStarbucksList = [];
+
+  void addToPriceList(
+    StarbucksMenuModel model,
+  ) {
+    if (model.isSelected) {
+      priceStarbucksList.add(model);
+    } else {
+      priceStarbucksList.remove(model);
+    }
+  }
+
+  double price = 0.0;
+
+List<RestaurantMenuModel> priceRestauranList = [];
+
+  void addToPriceList2(
+    RestaurantMenuModel model,
+  ) {
+    if (model.isSelected) {
+      priceRestauranList.add(model);
+    } else {
+      priceRestauranList.remove(model);
+    }
+  }
+
+
+
 }

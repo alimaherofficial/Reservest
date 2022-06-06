@@ -3,51 +3,61 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reservest/cubit/menu_price/cubit.dart';
 import 'package:reservest/cubit/menu_price/stastes.dart';
 import 'package:reservest/models/restaurants_menu.dart';
-import 'package:reservest/modules/price_screen/price_screen.dart';
+import 'package:reservest/modules/price_screen/price_screen%20copy.dart';
 
 class RestaurantsMenu extends StatelessWidget {
   const RestaurantsMenu({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0,
-        title: const Text('menu'),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.check_box,
-              color: Colors.white,
-              size: 30,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const PriceScreen(),
+    return BlocConsumer<MenuPriceCubit, MenuPriceStates>(
+      listener: (context, state) {
+      },
+      builder: (context, state) {
+        var cubit = MenuPriceCubit.get(context);
+        return Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            elevation: 0,
+            title: const Text('menu'),
+            actions: [
+              IconButton(
+                icon: const Icon(
+                  Icons.check_box,
+                  color: Colors.white,
+                  size: 30,
                 ),
-              );
-            },
+                onPressed: () {
+                  for (var i = 0; i < cubit.priceRestauranList.length; i++) {
+                    cubit.price = cubit.price + cubit.priceRestauranList[i].price!;
+                  }
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PriceRestaurantScreen(),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
-        ],
-      ),
-      body: SafeArea(
-        child: Center(
-          child: ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            itemCount: getRestaurantmenu1.length,
-            separatorBuilder: (BuildContext context, int index) {
-              return Container();
-            },
-            itemBuilder: (BuildContext context, int index) {
-              return menu(getRestaurantmenu1[index], getRestaurantmenu2[index],
-                  context);
-            },
+          body: SafeArea(
+            child: Center(
+              child: ListView.separated(
+                physics: const BouncingScrollPhysics(),
+                itemCount: getRestaurantmenu1.length,
+                separatorBuilder: (BuildContext context, int index) {
+                  return Container();
+                },
+                itemBuilder: (BuildContext context, int index) {
+                  return menu(getRestaurantmenu1[index],
+                      getRestaurantmenu2[index], context);
+                },
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
@@ -72,6 +82,7 @@ Widget menu(
                   child: InkWell(
                     onTap: () {
                       cubit.changeColor(model);
+                      cubit.addToPriceList2(model);
                     },
                     child: Material(
                       elevation: 5.0,
@@ -96,7 +107,8 @@ Widget menu(
                 Expanded(
                   child: InkWell(
                     onTap: () {
-                     cubit.changeColor2(model2);
+                      cubit.changeColor2(model2);
+                      cubit.addToPriceList2(model2);
                     },
                     child: Material(
                       shadowColor: Colors.black,
