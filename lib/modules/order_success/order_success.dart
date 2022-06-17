@@ -10,7 +10,7 @@ class OrderSuccess extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: const Text('oreder success'),
+        title: const Text('order success'),
       ),
       body: SafeArea(
         child: Center(
