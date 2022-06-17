@@ -56,7 +56,7 @@ class MenuPriceCubit extends Cubit<MenuPriceStates> {
 
   double price = 0.0;
 
-List<RestaurantMenuModel> priceRestauranList = [];
+  List<RestaurantMenuModel> priceRestauranList = [];
 
   void addToPriceList2(
     RestaurantMenuModel model,
@@ -68,6 +68,53 @@ List<RestaurantMenuModel> priceRestauranList = [];
     }
   }
 
+  List<RestaurantMenuModel> quantityRestauranList = [];
+  void quantityRestaurant(
+    RestaurantMenuModel model,
+  ) {
+    if (model.isSelected) {
+      quantityRestauranList.add(model);
+    } else {
+      quantityRestauranList.remove(model);
+    }
+  }
+  List<StarbucksMenuModel> quantitysStarbuckslist = [];
+  void quantityStarbucks(
+    StarbucksMenuModel model,
+  ) {
+    if (model.isSelected) {
+      quantitysStarbuckslist.add(model);
+    } else {
+      quantitysStarbuckslist.remove(model);
+    }
+  }
 
 
+  void addNumberRestaurant(RestaurantMenuModel model ) {
+    model.quantity = model.quantity! + 1;
+    emit(MenuChangenumberState1());
+  }
+
+  void minusNumberRestaurant(RestaurantMenuModel model) {
+    if (model.quantity! > 1) {
+      model.quantity = model.quantity! - 1;
+      emit(MenuChangenumberState2());
+    }
+  }
+
+
+
+
+
+  void addNumberstStarbucks(StarbucksMenuModel model ) {
+    model.quantity = model.quantity + 1;
+    emit(MenuChangenumberState1());
+  }
+
+  void minusNumberStarbucks(StarbucksMenuModel model) {
+    if (model.quantity > 1) {
+      model.quantity = model.quantity - 1;
+      emit(MenuChangenumberState2());
+    }
+  }
 }

@@ -8,7 +8,7 @@ import 'package:reservest/cubit/menu/menu_cubit.dart';
 import 'package:reservest/cubit/menu/menu_states.dart';
 import 'package:reservest/cubit/menu_price/cubit.dart';
 import 'package:reservest/cubit/menu_price/stastes.dart';
-import 'package:reservest/modules/login_screen/login_screen.dart';
+import 'package:reservest/modules/starbucks_menu/starbucks_menu.dart';
 import 'package:reservest/styles/colors/colors.dart';
 
 void main() async {
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: appColor,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: const LoginScreen(),
+          home: const StarbucksMenu(),
         ),
       ),
     );

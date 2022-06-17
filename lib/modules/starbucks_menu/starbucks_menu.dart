@@ -28,7 +28,9 @@ class StarbucksMenu extends StatelessWidget {
                 ),
                 onPressed: () {
                   for (var i = 0; i < cubit.priceStarbucksList.length; i++) {
-                    cubit.price = cubit.price + cubit.priceStarbucksList[i].price!;
+                    cubit.price = cubit.price +
+                        (cubit.priceStarbucksList[i].price! *
+                            cubit.priceStarbucksList[i].quantity);
                   }
                   Navigator.push(
                     context,
@@ -74,7 +76,7 @@ Widget menu(
           padding: const EdgeInsets.all(15.0),
           // ignore: sized_box_for_whitespace
           child: Container(
-            height: 200,
+            height: 215,
             child: Row(
               children: [
                 Expanded(
@@ -94,6 +96,48 @@ Widget menu(
                             image: AssetImage(
                               '${model.imageName}',
                             ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  cubit.minusNumberStarbucks(model);
+                                },
+                                icon: Icon(
+                                  Icons.remove,
+                                  size: 25,
+                                  color: model.isSelected
+                                      ? Colors.white
+                                      : Colors.green,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                model.quantity.toString(),
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  cubit.addNumberstStarbucks(model);
+                                },
+                                icon: Icon(
+                                  Icons.add,
+                                  size: 25,
+                                  color: model.isSelected
+                                      ? Colors.white
+                                      : Colors.green,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -120,6 +164,48 @@ Widget menu(
                             image: AssetImage(
                               '${model2.imageName}',
                             ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  cubit.minusNumberStarbucks(model2);
+                                },
+                                icon: Icon(
+                                  Icons.remove,
+                                  size: 25,
+                                  color: model2.isSelected
+                                      ? Colors.white
+                                      : Colors.green,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                model2.quantity.toString(),
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  cubit.addNumberstStarbucks(model2);
+                                },
+                                icon: Icon(
+                                  Icons.add,
+                                  size: 25,
+                                  color: model2.isSelected
+                                      ? Colors.white
+                                      : Colors.green,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

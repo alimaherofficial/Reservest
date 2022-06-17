@@ -24,6 +24,19 @@ class MenuCubit extends Cubit<MenuStates> {
             : const StarbucksMenu(),
       ),
     );
-  
+  }
+
+  int number = 1;
+
+  void addNumber() {
+    number = number + 1;
+    emit(MenuChangenumberState1());
+  }
+
+  void minusNumber() {
+    if (number > 1) {
+      number = number - 1;
+      emit(MenuChangenumberState2());
+    }
   }
 }

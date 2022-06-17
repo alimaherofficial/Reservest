@@ -36,63 +36,69 @@ class PriceRestaurantScreen extends StatelessWidget {
           ),
           body: SafeArea(
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: cubit.priceRestauranList.length,
-                    separatorBuilder: (BuildContext context, int index) {
-                      return Container();
-                    },
-                    itemBuilder: (BuildContext context, int index) {
-                      return pricebuilder(
-                          cubit.priceRestauranList[index], context);
-                    },
-                    shrinkWrap: true,
-                  ),
-                  // const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Total Amount:',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        ' ${cubit.price.toString()}',
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  MaterialButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const OrderSuccess(),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    ListView.separated(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: cubit.priceRestauranList.length,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return Container();
+                      },
+                      itemBuilder: (BuildContext context, int index) {
+                        return pricebuilder(
+                            cubit.priceRestauranList[index], context);
+                      },
+                      shrinkWrap: true,
+                    ),
+                    // const Spacer(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Total Amount:',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                      );
-                    },
-                    color: appColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                        Text(
+                          ' ${cubit.price.toString()}',
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
-                    // ignore: sort_child_properties_last
-                    child: Text(
-                      'ٍSubmit Order'.toUpperCase(),
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    MaterialButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const OrderSuccess(),
+                          ),
+                        );
+                      },
+                      color: appColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
+                      // ignore: sort_child_properties_last
+                      child: Text(
+                        'ٍSubmit Order'.toUpperCase(),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      ),
+                      minWidth: double.infinity,
                     ),
-                    minWidth: double.infinity,
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -173,13 +179,39 @@ Widget pricebuilder(
             const SizedBox(
               height: 20,
             ),
-            Text(
-              '${model.price}',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.black54,
-              ),
+            Row(
+              children: [
+                Text(
+                  '${model.price}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54,
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                const Text(
+                  'x',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54,
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  '${model.quantity}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54,
+                  ),
+                ),
+              ],
             ),
           ],
         ),
